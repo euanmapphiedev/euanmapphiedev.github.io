@@ -4,8 +4,235 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Euan Mapphie | GIS Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Page-specific styles for the hero section only -->
+  <style>
+    /* HERO */
+    .hero {
+      padding: 96px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--black-soft);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      margin-bottom: 20px;
+    }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--black-soft);
+      max-width: 520px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    /* ABOUT SNIPPET on homepage — photo + text side by side */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-photo {
+      width: 200px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      background: var(--bg-deeper); /* shows while image loads */
+      border: 1px solid var(--border);
+
+      /* Placeholder styling — remove once you add your real photo */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--black-soft);
+    }
+
+    .about-text p {
+      margin-bottom: 16px;
+    }
+
+    .about-text p:last-of-type {
+      margin-bottom: 24px;
+    }
+
+    /* Responsive: stack photo above text on mobile */
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-photo {
+        width: 140px;
+        height: 170px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Coming soon.</h1>
+
+  <!-- =====================
+       NAVIGATION
+       The sticky bar at top. .active highlights the current page.
+  ===================== -->
+  <nav>
+    <a href="index.html" class="nav-logo">EM / GIS</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- =====================
+       HERO SECTION
+       First thing visitors see. Name, title, one-line pitch.
+  ===================== -->
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">GIS Analyst &amp; Web Mapper &nbsp;·&nbsp; Norfolk, VA</p>
+      <h1>Euan Mapphie<br>Spatial data,<br>made legible.</h1>
+      <p class="hero-sub">
+        I build maps and geospatial tools that turn complex data into clear decisions.
+        Specialising in ArcGIS, interactive web mapping, and spatial analysis.
+      </p>
+    </section>
+
+    <!-- =====================
+         ABOUT ME (homepage snippet)
+         Short version — links through to the full About page.
+    ===================== -->
+    <section id="about">
+      <p class="section-label">About Me</p>
+      <div class="about-grid">
+
+        <!-- Replace assets/images/photo.jpg with your actual photo -->
+        <div class="about-photo">
+          <!-- Once you have a photo, replace this div with:
+               <img src="assets/images/photo.jpg" alt="Euan Mapphie" class="about-photo"> -->
+          your photo here
+        </div>
+
+        <div class="about-text">
+          <h2>Hi, I'm Euan.</h2>
+          <p>
+            A GIS analyst with a passion for making spatial data useful. I work across the
+            full geospatial stack — from desktop analysis in ArcGIS Pro to publishing
+            interactive web maps that anyone can explore in a browser.
+          </p>
+          <p>
+            Currently building toward roles in geospatial development and GIS analysis,
+            with a focus on telling clear, honest stories through maps.
+          </p>
+          <a href="about.html" class="btn btn-dark">More About Me</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================
+         FEATURED PROJECTS
+         3 highlight cards. Each links to its project or external storymap/etc.
+         Replace the placeholder thumbnails with real screenshots later.
+    ===================== -->
+    <section id="projects">
+      <p class="section-label">Featured Projects</p>
+      <div class="cards-grid">
+
+        <!-- PROJECT CARD 1 -->
+        <!-- To update: change href, src on img, tag text, title, description -->
+        <a href="portfolio.html" class="card">
+          <img
+            src="assets/images/project1-thumb.jpg"
+            alt="DC Grocery Hot Spot Analysis map thumbnail"
+            class="card-img"
+            onerror="this.style.background='var(--bg-deeper)';this.removeAttribute('src')"
+          >
+          <div class="card-body">
+            <span class="card-tag">ArcGIS Pro</span>
+            <h3 class="card-title">DC Grocery Hot Spot Analysis</h3>
+            <p class="card-desc">
+              Spatial cluster analysis identifying food access disparities across
+              Washington DC neighbourhoods using hot spot analysis tools.
+            </p>
+          </div>
+        </a>
+
+        <!-- PROJECT CARD 2 -->
+        <a href="portfolio.html" class="card">
+          <img
+            src="assets/images/project2-thumb.jpg"
+            alt="Environmental Change StoryMap thumbnail"
+            class="card-img"
+            onerror="this.style.background='var(--bg-deeper)';this.removeAttribute('src')"
+          >
+          <div class="card-body">
+            <span class="card-tag">ArcGIS StoryMaps</span>
+            <h3 class="card-title">Environmental Change StoryMap</h3>
+            <p class="card-desc">
+              Narrative-driven web map exploring vegetation change over time
+              using remote sensing and NDVI analysis.
+            </p>
+          </div>
+        </a>
+
+        <!-- PROJECT CARD 3 -->
+        <a href="portfolio.html" class="card">
+          <img
+            src="assets/images/project3-thumb.jpg"
+            alt="Interactive Web Map thumbnail"
+            class="card-img"
+            onerror="this.style.background='var(--bg-deeper)';this.removeAttribute('src')"
+          >
+          <div class="card-body">
+            <span class="card-tag">Leaflet.js</span>
+            <h3 class="card-title">Interactive Choropleth Web Map</h3>
+            <p class="card-desc">
+              Live browser-based choropleth map built with Leaflet.js and GeoJSON,
+              hosted directly on GitHub Pages.
+            </p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Link through to full portfolio -->
+      <div style="margin-top: 28px;">
+        <a href="portfolio.html" class="btn btn-outline">View All Projects</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================
+       FOOTER
+       Appears on every page. Update your LinkedIn URL below.
+  ===================== -->
+  <footer>
+    <span class="footer-left">© 2026 Euan Mapphie</span>
+    <ul class="footer-links">
+      <li><a href="https://github.com/euanmapphiedev" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/YOUR-LINKEDIN-HERE" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+
 </body>
 </html>
