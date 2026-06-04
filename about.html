@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Euan McPhie</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .about-hero {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: start;
+      padding: 72px 0 64px;
+    }
+    .about-hero-photo {
+      width: 260px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--bg-deeper);
+      display: block;
+    }
+    .about-hero-text h1 { font-size: clamp(28px, 4vw, 44px); margin-bottom: 8px; }
+    .subtitle {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--black-soft);
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+    }
+    .about-hero-text p { margin-bottom: 16px; }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .info-block h3 {
+      font-size: 14px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black-soft);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .info-list li {
+      font-size: 14px;
+      color: var(--black-soft);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .info-list li::before {
+      content: '→';
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--black-soft);
+      opacity: 0.5;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .about-hero { grid-template-columns: 1fr; }
+      .about-hero-photo { width: 160px; height: 200px; }
+      .three-col { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-left"><img src="assets/images/sidebar-left.jpg" alt=""></div>
+  <div class="sidebar-right"><img src="assets/images/sidebar-right.jpg" alt=""></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">EM / GIS</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="about-hero">
+      <img src="assets/images/photoabout.jpeg" alt="Euan McPhie" class="about-hero-photo">
+      <div class="about-hero-text">
+        <h1>Euan McPhie</h1>
+        <p class="subtitle">GIS Analyst &nbsp;·&nbsp; Web Mapper &nbsp;·&nbsp; Washington, DC</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. My journey into GIS began with a fascination for how place shapes everything — how geography underpins decisions in public health, urban planning, environmental management, and beyond.</p>
+        <p>Through my studies and independent projects, I've developed expertise across the full geospatial stack: from data collection and spatial analysis in ArcGIS Pro and QGIS, to building interactive web maps using JavaScript and Leaflet.js. I'm particularly drawn to the intersection of data science and cartography — using Python scripting and spatial statistics to surface patterns that aren't visible in raw data alone.</p>
+        <p>Outside of GIS, I'm interested in how maps communicate — how visual choices shape what people understand and believe about the world. I aim to make work that's technically rigorous and visually honest.</p>
+        <p>Currently seeking roles in geospatial development, GIS analysis, or web mapping where I can keep building at the edge of what maps can do.</p>
+      </div>
+    </div>
+
+    <section>
+      <p class="section-label">Background</p>
+      <div class="three-col">
+        <div class="info-block">
+          <h3>Research Interests</h3>
+          <ul class="info-list">
+            <li>Urban food systems &amp; access</li>
+            <li>Environmental change detection</li>
+            <li>Public health geography</li>
+            <li>Interactive &amp; narrative cartography</li>
+            <li>Remote sensing &amp; land cover</li>
+            <li>Spatial statistics &amp; hot spot analysis</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <h3>Technical Skills</h3>
+          <ul class="info-list">
+            <li>ArcGIS Pro &amp; ArcGIS Online</li>
+            <li>QGIS</li>
+            <li>Python (arcpy, geopandas)</li>
+            <li>Leaflet.js &amp; web mapping</li>
+            <li>HTML, CSS, JavaScript</li>
+            <li>SQL &amp; spatial queries</li>
+            <li>ArcGIS StoryMaps</li>
+            <li>Remote sensing (NDVI, land cover)</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <h3>Certifications</h3>
+          <ul class="info-list">
+            <li>Esri — Getting Started with GIS</li>
+            <li>Esri — Spatial Data Science: The New Frontier</li>
+            <li>Add your real certifications here</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-left">© 2026 Euan McPhie</span>
+    <ul class="footer-links">
+      <li><a href="https://github.com/euanmapphiedev" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/euan-mcphie/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

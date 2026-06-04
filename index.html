@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Euan McPhie | GIS Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero {
+      padding: 96px 0 80px;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--black-soft);
+      margin-bottom: 20px;
+    }
+    .hero h1 { margin-bottom: 24px; }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--black-soft);
+      max-width: 540px;
+      line-height: 1.8;
+    }
+    .hero-sub a {
+      color: var(--black);
+      font-weight: 500;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .hero-sub a:hover { opacity: 0.6; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-photo {
+      width: 200px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--bg-deeper);
+      display: block;
+    }
+    .about-text p { margin-bottom: 16px; }
+    .about-text p:last-of-type { margin-bottom: 24px; }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { width: 140px; height: 170px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBARS — swap src images for your own NDVI/satellite imagery -->
+  <div class="sidebar-left">
+    <img src="assets/images/sidebar-left.jpg" alt="">
+  </div>
+  <div class="sidebar-right">
+    <img src="assets/images/sidebar-right.jpg" alt="">
+  </div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">EM / GIS</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <p class="hero-eyebrow">GIS Analyst &amp; Web Mapper &nbsp;·&nbsp; Washington, DC</p>
+      <h1>Euan McPhie</h1>
+      <p class="hero-sub">
+        Hello! Welcome to my portfolio. I enjoy all things GIS, remote sensing, and earth science.
+        This portfolio features my professional work and experiences.
+        <br><br>
+        <a href="portfolio.html">View my recent work →</a>
+      </p>
+    </section>
+
+    <section id="about">
+      <p class="section-label">About Me</p>
+      <div class="about-grid">
+        <img
+          src="assets/images/photo.jpeg"
+          alt="Euan McPhie"
+          class="about-photo"
+        >
+        <div class="about-text">
+          <h2>Hi, I'm Euan.</h2>
+          <p>
+            A GIS analyst with a passion for making spatial data useful. I work across the
+            full geospatial stack — from desktop analysis in ArcGIS Pro to publishing
+            interactive web maps that anyone can explore in a browser.
+          </p>
+          <p>
+            Currently building toward roles in geospatial development and GIS analysis,
+            with a focus on telling clear, honest stories through maps.
+          </p>
+          <a href="about.html" class="btn btn-dark">More About Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-label">Featured Projects</p>
+      <div class="cards-grid">
+
+        <a href="portfolio.html" class="card">
+          <img src="assets/images/project1-thumb.jpg" alt="DC Grocery Hot Spot Analysis" class="card-img" onerror="this.style.background='var(--bg-deeper)';this.removeAttribute('src')">
+          <div class="card-body">
+            <span class="card-tag">ArcGIS Pro</span>
+            <h3 class="card-title">DC Grocery Hot Spot Analysis</h3>
+            <p class="card-desc">Spatial cluster analysis identifying food access disparities across Washington DC neighbourhoods.</p>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="card">
+          <img src="assets/images/project2-thumb.jpg" alt="Environmental Change StoryMap" class="card-img" onerror="this.style.background='var(--bg-deeper)';this.removeAttribute('src')">
+          <div class="card-body">
+            <span class="card-tag">ArcGIS StoryMaps</span>
+            <h3 class="card-title">Environmental Change StoryMap</h3>
+            <p class="card-desc">Narrative web map exploring vegetation change over time using remote sensing and NDVI analysis.</p>
+          </div>
+        </a>
+
+        <a href="portfolio.html" class="card">
+          <img src="assets/images/project3-thumb.jpg" alt="Interactive Web Map" class="card-img" onerror="this.style.background='var(--bg-deeper)';this.removeAttribute('src')">
+          <div class="card-body">
+            <span class="card-tag">Leaflet.js</span>
+            <h3 class="card-title">Interactive Choropleth Web Map</h3>
+            <p class="card-desc">Live browser-based choropleth map built with Leaflet.js and GeoJSON, hosted on GitHub Pages.</p>
+          </div>
+        </a>
+
+      </div>
+      <div style="margin-top: 28px;">
+        <a href="portfolio.html" class="btn btn-outline">View All Projects</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-left">© 2026 Euan McPhie</span>
+    <ul class="footer-links">
+      <li><a href="https://github.com/euanmapphiedev" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/euan-mcphie/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

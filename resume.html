@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume | Euan McPhie</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .resume-header {
+      padding: 64px 0 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--border);
+    }
+    .resume-header h1 { font-size: clamp(28px, 4vw, 44px); }
+    .pdf-wrapper { padding: 40px 0 64px; }
+    .pdf-viewer {
+      width: 100%;
+      height: 85vh;
+      min-height: 600px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+    .pdf-fallback {
+      display: none;
+      padding: 48px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    .pdf-fallback p { margin-bottom: 20px; max-width: none; }
+    @media (max-width: 768px) {
+      .resume-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .pdf-viewer { height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-left"><img src="assets/images/sidebar-left.jpg" alt=""></div>
+  <div class="sidebar-right"><img src="assets/images/sidebar-right.jpg" alt=""></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">EM / GIS</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="resume.html" class="active">Resume</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="resume-header">
+      <h1>Resume</h1>
+      <a href="assets/resume.pdf" download="Euan_McPhie_Resume.pdf" class="btn btn-dark">Download PDF</a>
+    </div>
+    <div class="pdf-wrapper">
+      <object
+        data="assets/resume.pdf"
+        type="application/pdf"
+        class="pdf-viewer"
+        aria-label="Euan McPhie Resume PDF"
+        onerror="this.style.display='none'; document.querySelector('.pdf-fallback').style.display='block'"
+      >
+        <div class="pdf-fallback" style="display:block;">
+          <p>Your browser doesn't support inline PDFs.</p>
+          <a href="assets/resume.pdf" download="Euan_McPhie_Resume.pdf" class="btn btn-dark">Download Resume</a>
+        </div>
+      </object>
+      <div class="pdf-fallback">
+        <p>PDF preview unavailable — download to view.</p>
+        <a href="assets/resume.pdf" download="Euan_McPhie_Resume.pdf" class="btn btn-dark">Download Resume</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-left">© 2026 Euan McPhie</span>
+    <ul class="footer-links">
+      <li><a href="https://github.com/euanmapphiedev" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/euan-mcphie/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Euan McPhie</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-hero h1 { margin-bottom: 14px; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      padding: 56px 0;
+    }
+    .contact-links h2 { font-size: 20px; margin-bottom: 24px; }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-item:first-of-type { border-top: 1px solid var(--border); }
+    .contact-item-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black-soft);
+    }
+    .contact-item a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      transition: opacity 0.2s;
+    }
+    .contact-item a:hover { opacity: 0.6; }
+    .contact-form h2 { font-size: 20px; margin-bottom: 24px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .form-group label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black-soft);
+    }
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg-dark);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--black); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-left"><img src="assets/images/sidebar-left.jpg" alt=""></div>
+  <div class="sidebar-right"><img src="assets/images/sidebar-right.jpg" alt=""></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">EM / GIS</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="contact-hero">
+      <h1>Get in Touch</h1>
+      <p>Open to GIS analyst, geospatial developer, and web mapping roles. Always happy to talk maps.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-links">
+        <h2>Find me here</h2>
+        <div class="contact-item">
+          <span class="contact-item-label">Email</span>
+          <a href="mailto:euanmapphie@gmail.com">euanmapphie@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/euan-mcphie/" target="_blank" rel="noopener">linkedin.com/in/euan-mcphie</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">GitHub</span>
+          <a href="https://github.com/euanmapphiedev" target="_blank" rel="noopener">github.com/euanmapphiedev</a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h2>Send a message</h2>
+        <form action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-left">© 2026 Euan McPhie</span>
+    <ul class="footer-links">
+      <li><a href="https://github.com/euanmapphiedev" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/euan-mcphie/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

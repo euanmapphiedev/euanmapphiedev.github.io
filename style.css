@@ -1,62 +1,84 @@
 /* ============================================
-   EUAN MAPPHIE — GIS PORTFOLIO
+   EUAN McPHIE — GIS PORTFOLIO
    style.css — shared across all pages
    ============================================ */
 
-/* --- 1. FONTS --- */
-/* We import two fonts from Google:
-   - Syne: used for headings, bold and geometric
-   - DM Mono: used for labels, nav, small UI text — gives the technical/GIS feel */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&family=DM+Mono:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap');
 
-/* --- 2. CSS VARIABLES (your color palette in one place) ---
-   Change --bg here and the whole site updates. */
 :root {
-  --bg:         #7bc47f;   /* Sage Bright — main background */
-  --bg-dark:    #5aa35e;   /* Slightly darker green — for cards, nav */
-  --bg-deeper:  #3d8a42;   /* Deeper green — borders, accents */
-  --black:      #0a0a0a;   /* Near-black — primary text */
-  --black-soft: #2a2a2a;   /* Softer black — secondary text */
-  --white:      #ffffff;   /* White — used sparingly for contrast */
-  --accent:     #000000;   /* Pure black — buttons, strong borders */
+  --bg:         #7bc47f;
+  --bg-dark:    #5aa35e;
+  --bg-deeper:  #3d8a42;
+  --black:      #0a0a0a;
+  --black-soft: #2a2a2a;
+  --white:      #ffffff;
+  --accent:     #000000;
   --border:     rgba(0,0,0,0.15);
   --border-strong: rgba(0,0,0,0.3);
   --radius:     8px;
   --radius-lg:  12px;
+  --sidebar-w:  160px;
 }
 
-/* --- 3. RESET & BASE ---
-   Removes browser default spacing and sets sensible defaults */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg);
   color: var(--black);
-  font-family: 'Syne', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   min-height: 100vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ── SIDEBAR PANELS ── */
+.sidebar-left,
+.sidebar-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--sidebar-w);
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.sidebar-left  { left: 0; }
+.sidebar-right { right: 0; }
+
+.sidebar-left img,
+.sidebar-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.55;
+  filter: saturate(1.1) brightness(0.85);
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* Gradient fade toward center so content edge is clean */
+.sidebar-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 40%, var(--bg) 100%);
+}
+.sidebar-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, transparent 40%, var(--bg) 100%);
 }
 
-/* --- 4. NAVIGATION --- */
+/* ── NAV ── */
 nav {
   display: flex;
   justify-content: space-between;
@@ -67,12 +89,12 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
+  margin: 0 var(--sidebar-w);
 }
 
 .nav-logo {
   font-family: 'DM Mono', monospace;
   font-size: 13px;
-  font-weight: 400;
   letter-spacing: 0.1em;
   color: var(--black);
 }
@@ -92,11 +114,8 @@ nav {
 }
 
 .nav-links a:hover,
-.nav-links a.active {
-  color: var(--black);
-}
+.nav-links a.active { color: var(--black); }
 
-/* Hamburger for mobile — hidden on desktop */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -106,7 +125,6 @@ nav {
   border: none;
   padding: 4px;
 }
-
 .nav-toggle span {
   display: block;
   width: 22px;
@@ -114,24 +132,29 @@ nav {
   background: var(--black);
 }
 
-/* --- 5. PAGE LAYOUT --- */
+/* ── PAGE LAYOUT ── */
 main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 48px;
+  position: relative;
+  z-index: 1;
+  /* Push content away from sidebars */
+  margin-left: var(--sidebar-w);
+  margin-right: var(--sidebar-w);
+  max-width: calc(100% - 2 * var(--sidebar-w));
 }
 
 section {
   padding: 64px 0;
-  border-bottom: 1px solid var(--border);
 }
 
-section:last-child {
-  border-bottom: none;
+/* Only add dividers between sections explicitly */
+section + section {
+  border-top: 1px solid var(--border);
 }
 
-/* --- 6. SECTION LABELS ---
-   The small mono uppercase labels above each section */
+/* ── SECTION LABELS ── */
 .section-label {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
@@ -151,25 +174,27 @@ section:last-child {
   background: var(--border);
 }
 
-/* --- 7. TYPOGRAPHY --- */
+/* ── TYPOGRAPHY ── */
 h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(36px, 5vw, 58px); /* clamp = scales with screen size */
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 5vw, 58px);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--black);
 }
 
 h2 {
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
 }
 
 h3 {
-  font-size: 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
   font-weight: 500;
   margin-bottom: 8px;
 }
@@ -181,7 +206,7 @@ p {
   max-width: 600px;
 }
 
-/* --- 8. BUTTONS --- */
+/* ── BUTTONS ── */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -193,30 +218,19 @@ p {
   transition: opacity 0.2s, transform 0.1s;
   border: none;
 }
-
-.btn:hover {
-  opacity: 0.85;
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-.btn-dark {
-  background: var(--black);
-  color: var(--bg);
-}
-
+.btn:hover { opacity: 0.82; }
+.btn:active { transform: scale(0.98); }
+.btn-dark { background: var(--black); color: var(--bg); }
 .btn-outline {
   background: transparent;
   color: var(--black);
   border: 1px solid var(--border-strong);
 }
 
-/* --- 9. PROJECT CARDS --- */
+/* ── PROJECT CARDS ── */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 16px;
 }
 
@@ -228,7 +242,6 @@ p {
   transition: transform 0.2s, border-color 0.2s;
   cursor: pointer;
 }
-
 .card:hover {
   transform: translateY(-3px);
   border-color: var(--border-strong);
@@ -238,13 +251,11 @@ p {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  background: var(--bg-deeper); /* fallback if no image */
+  background: var(--bg-deeper);
   display: block;
 }
 
-.card-body {
-  padding: 18px;
-}
+.card-body { padding: 18px; }
 
 .card-tag {
   font-family: 'DM Mono', monospace;
@@ -273,34 +284,48 @@ p {
   max-width: none;
 }
 
-/* --- 10. SKILL/FILTER PILLS --- */
+/* ── FILTER PILLS (portfolio page) ── */
 .pill {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   padding: 6px 14px;
   border-radius: 20px;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--black);
   cursor: pointer;
-  background: transparent;
-  color: var(--black-soft);
+  background: var(--white);
+  color: var(--black);
   transition: background 0.15s, color 0.15s;
 }
-
 .pill:hover,
 .pill.active {
   background: var(--black);
-  color: var(--bg);
+  color: var(--white);
   border-color: var(--black);
 }
 
-/* --- 11. FOOTER --- */
+/* Card skill tags (portfolio page bubbles) */
+.card-skill {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  border: 1px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  display: inline-block;
+  margin: 3px 3px 0 0;
+}
+
+/* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--border);
   padding: 28px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 100%;
+  margin: 0 var(--sidebar-w);
+  position: relative;
+  z-index: 1;
 }
 
 .footer-left {
@@ -315,7 +340,6 @@ footer {
   gap: 24px;
   list-style: none;
 }
-
 .footer-links a {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
@@ -323,56 +347,37 @@ footer {
   letter-spacing: 0.06em;
   transition: color 0.2s;
 }
+.footer-links a:hover { color: var(--black); }
 
-.footer-links a:hover {
-  color: var(--black);
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  :root { --sidebar-w: 100px; }
 }
 
-/* --- 12. RESPONSIVE (mobile) ---
-   When screen is narrower than 768px, stack the nav and shrink padding */
-@media (max-width: 768px) {
-  nav {
-    padding: 16px 24px;
-    position: relative;
-  }
+@media (max-width: 860px) {
+  :root { --sidebar-w: 0px; }
+  .sidebar-left, .sidebar-right { display: none; }
+  nav { margin: 0; }
+  main { margin: 0 auto; max-width: 100%; padding: 0 24px; }
+  footer { margin: 0; padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+}
 
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; position: relative; }
   .nav-links {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     background: var(--bg);
     flex-direction: column;
     padding: 16px 24px;
     gap: 16px;
     border-bottom: 1px solid var(--border);
+    z-index: 200;
   }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  main {
-    padding: 0 24px;
-  }
-
-  section {
-    padding: 48px 0;
-  }
-
-  footer {
-    padding: 24px;
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+  section { padding: 48px 0; }
+  .cards-grid { grid-template-columns: 1fr; }
 }
