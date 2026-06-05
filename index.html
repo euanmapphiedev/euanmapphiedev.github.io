@@ -7,31 +7,47 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .hero {
-      padding: 96px 0 80px;
-    }
-    .hero-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--black-soft);
-      margin-bottom: 20px;
-    }
-    .hero h1 { margin-bottom: 24px; }
-    .hero-sub {
-      font-size: 16px;
-      color: var(--black-soft);
-      max-width: 540px;
-      line-height: 1.8;
-    }
-    .hero-sub a {
-      color: var(--black);
-      font-weight: 500;
-      border-bottom: 1px solid var(--black);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
-    }
-    .hero-sub a:hover { opacity: 0.6; }
+  padding: 96px 0 80px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 48px;
+  align-items: center;
+}
+.hero-content { display: flex; flex-direction: column; }
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--black-soft);
+  margin-bottom: 20px;
+}
+.hero h1 { margin-bottom: 24px; }
+.hero-sub {
+  font-size: 16px;
+  color: var(--black-soft);
+  max-width: 540px;
+  line-height: 1.8;
+}
+.hero-sub a {
+  color: var(--black);
+  font-weight: 500;
+  border-bottom: 1px solid var(--black);
+  padding-bottom: 1px;
+  transition: opacity 0.2s;
+}
+.hero-sub a:hover { opacity: 0.6; }
+.hero-image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: block;
+  object-fit: cover;
+}
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-image { max-height: 300px; }
+}
 
     .about-grid {
       display: grid;
@@ -83,16 +99,19 @@
 
   <main>
     <section class="hero">
-      <p class="hero-eyebrow">GIS Analyst &nbsp;·&nbsp; Washington, DC</p>
-      <h1>Euan McPhie</h1>
-      <p class="hero-sub">
-        Hello! Welcome to my portfolio. I enjoy all things GIS, remote sensing, and history.
-        This portfolio features my professional work and experiences.
-        <br><br>
-        <a href="portfolio.html">View my recent work →</a>
-      </p>
-    </section>
-
+  <div class="hero-content">
+    <p class="hero-eyebrow">GIS Analyst &nbsp;·&nbsp; Washington, DC</p>
+    <h1>Euan McPhie</h1>
+    <p class="hero-sub">
+      Hello! Welcome to my portfolio. I enjoy all things GIS, remote sensing, and history.
+      This portfolio features my professional work and experiences.
+      <br><br>
+      <a href="portfolio.html">View my recent work →</a>
+    </p>
+  </div>
+  <img src="assets/images/envipics.png" alt="Remote sensing imagery" class="hero-image">
+</section>
+    
     <section id="about">
       <p class="section-label">About Me</p>
       <div class="about-grid">
