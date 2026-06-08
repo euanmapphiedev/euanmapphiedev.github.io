@@ -7,44 +7,67 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .hero {
-  padding: 96px 0 80px;
-  display: grid;
-  grid-template-columns: 1fr 600px;
-  gap: 48px;
+  position: relative;
+  min-height: 520px;
+  display: flex;
   align-items: center;
+  overflow: hidden;
+  margin: 0 calc(-1 * 48px);
+  padding: 0 48px;
 }
-.hero-content { display: flex; flex-direction: column; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  background: rgba(20, 20, 20, 0.72);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-lg);
+  padding: 48px 48px;
+  max-width: 520px;
+}
 .hero-eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--black-soft);
+  color: rgba(255,255,255,0.6);
   margin-bottom: 20px;
 }
-.hero h1 { margin-bottom: 24px; }
+.hero h1 {
+  margin-bottom: 24px;
+  color: var(--white);
+}
 .hero-sub {
-  font-size: 16px;
-  color: var(--black-soft);
-  max-width: 540px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
   line-height: 1.8;
 }
 .hero-sub a {
-  color: var(--black);
+  color: var(--white);
   font-weight: 500;
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid rgba(255,255,255,0.5);
   padding-bottom: 1px;
   transition: opacity 0.2s;
 }
 .hero-sub a:hover { opacity: 0.6; }
-.hero-image {
-  width: 100%;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  display: block;
-  object-fit: cover;
-}
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  .hero { min-height: 420px; margin: 0 -24px; padding: 0 24px; }
+  .hero-content { padding: 32px 28px; }
+} {
   .hero { grid-template-columns: 1fr; }
   .hero-image { max-height: 300px; }
 }
@@ -99,6 +122,8 @@
 
   <main>
     <section class="hero">
+  <img src="assets/images/SWIRFalseColorComp.png" alt="SWIR False Color Composite DC" class="hero-bg">
+  <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">GIS Analyst &nbsp;·&nbsp; Washington, DC</p>
     <h1>Euan McPhie</h1>
@@ -109,7 +134,6 @@
       <a href="portfolio.html">View my recent work →</a>
     </p>
   </div>
-  <img src="assets/images/envipics.png" alt="Remote sensing imagery" class="hero-image">
 </section>
     
     <section id="about">
